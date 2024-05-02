@@ -958,7 +958,6 @@ async function main() {
         (e) => {
             e.preventDefault();
             let shift_step_size1 = 0.001;
-            let rot_scale = 0.1;
             
             if (e.touches.length === 1 && down) {
                 let inv = invert4(viewMatrix);
@@ -1003,7 +1002,7 @@ async function main() {
                     2;
                 let inv = invert4(viewMatrix);
                 // inv = translate4(inv,  0, 0, d);
-                inv = rotate4(inv, rot_scale*dtheta, 0, 0, 1);
+                inv = rotate4(inv, dtheta, 0, 0, 1);
 
                 inv = translate4(inv, -shift_step_size1* dx / innerWidth, -shift_step_size1 * dy / innerHeight, 0);
 
