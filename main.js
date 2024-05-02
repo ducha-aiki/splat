@@ -618,11 +618,11 @@ async function main() {
     const url = new URL(
         // "nike.splat",
         // location.href,
-        params.get("url") || "kitchen.splat",
+        params.get("url") || "kitchen-bg-ar-long.splat",
         "https://storage.googleapis.com/hack-16-splats/kitchen-bg-ar/",
     );
     const req = await fetch(url, {
-        mode: "no-cors", // no-cors, *cors, same-origin
+        mode: "cors", // no-cors, *cors, same-origin
         credentials: "omit", // include, *same-origin, omit
     });
     console.log(req);
