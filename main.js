@@ -957,12 +957,13 @@ async function main() {
         "touchmove",
         (e) => {
             e.preventDefault();
+            let shift_step_size1 = 0.01;
             if (e.touches.length === 1 && down) {
                 let inv = invert4(viewMatrix);
-                let dx = (4 * (e.touches[0].clientX - startX)) / innerWidth;
-                let dy = (4 * (e.touches[0].clientY - startY)) / innerHeight;
+                let dx = shift_step_size1*(4 * (e.touches[0].clientX - startX)) / innerWidth;
+                let dy = shift_step_size1*(4 * (e.touches[0].clientY - startY)) / innerHeight;
 
-                let d = 4;
+                let d = 4*shift_step_size1;
                 inv = translate4(inv, 0, 0, d);
                 // inv = translate4(inv,  -x, -y, -z);
                 // inv = translate4(inv,  x, y, z);
@@ -1002,10 +1003,10 @@ async function main() {
                 // inv = translate4(inv,  0, 0, d);
                 inv = rotate4(inv, dtheta, 0, 0, 1);
 
-                inv = translate4(inv, -dx / innerWidth, -dy / innerHeight, 0);
+                inv = translate4(inv, -shift_step_size1* dx / innerWidth, -shift_step_size1 * dy / innerHeight, 0);
 
                 // let preY = inv[13];
-                inv = translate4(inv, 0, 0, 3 * (1 - dscale));
+                inv = translate4(inv, 0, 0, shift_step_size1*3 * (1 - dscale));
                 // inv[13] = preY;
 
                 viewMatrix = invert4(inv);
