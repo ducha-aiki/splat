@@ -618,7 +618,7 @@ async function main() {
     const url = new URL(
         // "nike.splat",
         // location.href,
-        params.get("url") || "kitchen-bg-ar-long.splat",
+        params.get("url") || "kitchen.splat",
         "https://storage.googleapis.com/hack-16-splats/kitchen-bg-ar/",
     );
     const req = await fetch(url, {
